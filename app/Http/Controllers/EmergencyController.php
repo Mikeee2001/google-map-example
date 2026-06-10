@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class EmergencyController extends Controller
 {
-      public function index()
+    public function index()
     {
         return view('emergency.index');
     }
@@ -19,8 +19,8 @@ class EmergencyController extends Controller
             'longitude' => 'required',
         ]);
 
+        // Original table
         Emergency::create([
-            'user_id' => auth()->id(),
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
             'status' => 'pending'
@@ -30,4 +30,24 @@ class EmergencyController extends Controller
             'success' => true
         ]);
     }
+
+
+    public function emergencyMap()
+    {
+        return view('admin.emergency-map');
+    }
+
+    // public function data()
+    // {
+    //     return EmergencyRequest::with('user')
+    //         ->where('status', 'pending')
+    //         ->latest()
+    //         ->get();
+    // }
+
+    public function getEmergencyData()
+    {
+        return Emergency::latest()->get();
+    }
+
 }

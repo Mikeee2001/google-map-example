@@ -46,6 +46,15 @@
         </li>
 
         <li>
+            <a href="{{ route('emergency') }}" class="menu-link">
+
+                <i class="fa-solid fa-gear"></i>
+                <span class="text">Emergency</span>
+
+            </a>
+        </li>
+
+        <li>
             <a href="#" class="menu-link">
 
                 <i class="fa-solid fa-gear"></i>

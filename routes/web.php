@@ -34,6 +34,9 @@ Route::get('/users', [AdminController::class, 'userList']);
 Route::delete('/users/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
 
 
-Route::get('/emergency',[EmergencyController::class,'index']);
+Route::get('/emergency', [EmergencyController::class, 'index'])->name('emergency');
 
-Route::post('/emergency/store',[EmergencyController::class,'store']);
+Route::post('/emergency/store', [EmergencyController::class, 'store']);
+Route::post('/emergency/store-request', [EmergencyController::class, 'storeRequest']);
+Route::get('/admin/emergencies/data', [EmergencyController::class, 'getEmergencyData']);
+Route::get('/admin/emergencies', [EmergencyController::class, 'emergencyMap'])->name('admin.emergencies');

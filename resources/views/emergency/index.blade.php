@@ -209,16 +209,33 @@
             function saveEmergency(lat, lng) {
 
                 fetch('/emergency/store', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]').content
-                    },
-                    body: JSON.stringify({
-                        latitude: lat,
-                        longitude: lng
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector(
+                                'meta[name=csrf-token]'
+                            ).content
+                        },
+                        body: JSON.stringify({
+                            latitude: lat,
+                            longitude: lng
+                        })
                     })
-                });
+                    .then(response => response.json())
+                    .then(data => {
+
+                        console.log(data);
+
+                        alert('Emergency submitted successfully');
+
+                    })
+                    .catch(error => {
+
+                        console.error(error);
+
+                        alert('Failed to submit emergency');
+
+                    });
 
             }
 
